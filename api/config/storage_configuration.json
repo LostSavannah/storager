@@ -1,0 +1,22 @@
+{
+	"LocalExample": {
+		"kind": "local",
+		"params": {
+			"BasePath": "/storage"
+		}
+	},
+	"MemoryExample": {
+		"kind": "memory",
+		"params": {
+			"TreeId": "default_tree"
+		}
+	},
+	"FTPExample": {
+		"kind": "ftp",
+		"params": {
+			"Hostname": "localhost",
+			"Username": "root",
+			"Password": "12345678"
+		}
+	}
+}

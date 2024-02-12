@@ -1,0 +1,14 @@
+name: Build and publish azurite container
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: docker-desktop
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          echo "ready!"

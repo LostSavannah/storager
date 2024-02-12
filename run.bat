@@ -1,0 +1,1 @@
+docker run -it --rm -p 45334:45334 storager
