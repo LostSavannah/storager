@@ -18,5 +18,11 @@
 			"Username": "root",
 			"Password": "12345678"
 		}
+	},
+	"LocalStorage2": {
+		"kind": "local",
+		"params": {
+			"BasePath": "D:\\test"
+		}
 	}
 }

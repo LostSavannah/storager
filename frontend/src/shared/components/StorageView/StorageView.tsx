@@ -14,7 +14,8 @@ export interface StorageViewProps{
     location: string,
     moveUp: () => void,
     uploadFile: (file:File) => void,
-    isLoading: boolean
+    isLoading: boolean,
+    deleteFile: (filename:string) => void
 }
 
 export default function StorageView({
@@ -25,7 +26,8 @@ export default function StorageView({
     location,
     moveUp,
     uploadFile,
-    isLoading
+    isLoading,
+    deleteFile
 }:StorageViewProps) {
     const [searchTerm, setSearchTerm] = useState("");
   function handleDrop(e:React.DragEvent<HTMLDivElement>){
@@ -63,14 +65,24 @@ export default function StorageView({
             {
             isLoading? 
             <LoadingComponent/>:
-            nodes.length == 0?
-            <EmptyComponent/>:
-            nodes.map(node => 
             <div className="col-12">
-                <NodeView key={node.name} node={node} navigateTo={navigateTo} linkTo={linkTo}/>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th>name</th>
+                            <th>actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {nodes.map(node => <NodeView key={node.name} node={node} navigateTo={navigateTo} linkTo={linkTo} deleteFile={deleteFile}/>)}
+                    </tbody>
+                </table>
             </div>
-            )}
+            }
+            {
+                !isLoading && nodes.length == 0? <EmptyComponent/>:<></>
+            }
         </div>
     </div>
-  )
+)
 }

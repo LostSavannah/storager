@@ -13,4 +13,8 @@ export class StorageService extends BaseHttpService{
     uploadFile(name:string, location:string, file:File){
         return this.postFile<string>(`storages/${name}/${location}`, file);
     }
+
+    deleteNode(name:string, location:string){
+        return this.delete<{[key:string]:string}>(`storages/${name}/${location}`);
+    }
 }

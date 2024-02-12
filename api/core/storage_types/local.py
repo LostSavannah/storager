@@ -1,4 +1,5 @@
 import os
+import shutil
 from ..storage import StorageNode
 from ..storage import Storage
 
@@ -41,4 +42,4 @@ class LocalStorage(Storage):
         if os.path.isfile(full_path):
             os.remove(full_path)
         else:
-            os.rmdir(full_path)
+            shutil.rmtree(full_path)

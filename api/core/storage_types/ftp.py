@@ -51,10 +51,19 @@ class FtpStorage(Storage):
             ftp.login()
             try:
                 ftp.sendcmd(f"DELE {path}")
-            except:
-                ftp.sendcmd(f"XRMD {path}")
+            except Exception as e:
+                print(e)
+                ftp.sendcmd(f"RMD {path}")
 
     def upload_file(self, path: str, data: bytes):
         with ftplib.FTP(self.hostname(), self.username(), self.password()) as ftp:
+            *folder_path, filename = path.split("/")
+            folder_path = [i for i in folder_path if len(i)]
+            for i in range(len(folder_path)):
+                folder = "/".join(folder_path[:i+1])
+                try:
+                    ftp.sendcmd(f"MKD {folder}")
+                except Exception as e:
+                    print(e)
             with BytesIO(data) as bdata:
                 ftp.storbinary(f"STOR {path}", bdata)

@@ -7,7 +7,7 @@ export function useStorage(){
     const [storage, setStorage] = useState<string>();
     const [location, setLocation] = useState<string>("/");
     const [nodes, setNodes] = useState<StorageNode[]>([]);
-    const [lastUpload, setLastUpload] = useState<string>("");
+    const [lastUpload, setLastUpload] = useState<number>(0);
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(()=>{
@@ -58,9 +58,26 @@ export function useStorage(){
             new StorageService()
                 .uploadFile(storage, fullPath, file)
                 .then(l => {
-                    setLastUpload(l);
+                    console.log(l);
+                    setLastUpload(lastUpload+1);
                     setIsLoading(false);
                 });
+        }
+    }
+
+    const deleteFile = (filename:string) => {
+        if(storage){
+            setIsLoading(true);
+            const path = location.split("/");
+            path.push(filename);
+            const fullPath = path.filter(p => p.length > 0).join("/");
+            new StorageService()
+                .deleteNode(storage, fullPath)
+                .then(r => {
+                    console.log(r);
+                    setLastUpload(lastUpload+1);
+                    setIsLoading(false);
+                })
         }
     }
 
@@ -75,6 +92,7 @@ export function useStorage(){
         nodes,
         moveUp,
         uploadFile,
-        isLoading
+        isLoading,
+        deleteFile
     }
 }

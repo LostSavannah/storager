@@ -30,7 +30,7 @@ def get_storages():
     with JsonFile(json_file_location) as data:
         return([name for name in data])
 
-@app.post("/storage")
+@app.post("/storages")
 def create_storage(storage:CreateStorageRequest):
     with JsonFile(json_file_location) as data:
         data[storage.name] = {

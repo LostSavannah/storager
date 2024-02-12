@@ -13,7 +13,8 @@ export default function StorageComponent() {
         location,
         moveUp,
         uploadFile,
-        isLoading
+        isLoading,
+        deleteFile
     } = useStorage();
   return (
     <div className="container">
@@ -31,6 +32,7 @@ export default function StorageComponent() {
                     moveUp={moveUp}
                     uploadFile={uploadFile}
                     isLoading={isLoading}
+                    deleteFile={deleteFile}
                     />}
             </div>
         </div>
