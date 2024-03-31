@@ -1,14 +1,25 @@
-name: Build and publish container
+name: Publish container locally
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main" ]  
+  schedule:
+      - cron: "30 6 * * *"
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-test
     steps:
-      - uses: actions/checkout@v3
-      - run: |
-          echo "ready!"
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Build new image
+        run: |
+          docker build -t storager --build-arg API_URL=https://test.moradev.dev/apps/storager .
+
+      - name: Restart container
+        run: |
+          docker stop storager || true
+          docker rm storager || true
+          docker run -d --restart unless-stopped --name storager -p 45334:45334 storager

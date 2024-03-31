@@ -14,6 +14,7 @@ import uvicorn
 json_file_location = os.environ["STORAGE_CONFIGURATION_FILE_LOCATION"]
 port:int = int(os.environ["STORAGE_PORT"])
 host:str = os.environ["STORAGE_HOST"]
+static_location:str = os.environ["STORAGE_STATIC"]
 
 storage_provider = StorageProvider()
 storage_provider.include({
@@ -74,13 +75,16 @@ def remove_directory(name:str, location:str):
             "result": "Ok"
         }
 
-#app.mount(
-#    "/",
-#    SPAStaticFiles(
-#        directory="/app/frontend",
-#        html=True
-#    ),
-#    name="static"
-#)
+app.mount(
+    "/",
+    SPAStaticFiles(
+        directory=static_location,
+        html=True
+    ),
+    name="static"
+)
 
-uvicorn.run(app, host=host, port=port)
+try:
+    uvicorn.run(app, host=host, port=port)
+except KeyboardInterrupt:
+    exit(0)

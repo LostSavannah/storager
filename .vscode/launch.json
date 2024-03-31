@@ -8,12 +8,13 @@
             "env": {
                 "STORAGE_CONFIGURATION_FILE_LOCATION" : "C:\\projects\\personal\\storage\\api\\config\\storage_configuration.json",
                 "STORAGE_PORT": "45334",
-                "STORAGE_HOST": "0.0.0.0"
+                "STORAGE_HOST": "0.0.0.0",
+                "STORAGE_STATIC": "C:\\projects\\personal\\storage\\frontend\\dist"
             },
             "name": "Python Debugger: Current File",
             "type": "debugpy",
             "request": "launch",
-            "program": "${file}",
+            "program": "./api/index.py",
             "console": "integratedTerminal"
         }
     ]
