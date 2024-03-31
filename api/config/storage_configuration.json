@@ -22,7 +22,7 @@
 	"LocalStorage2": {
 		"kind": "local",
 		"params": {
-			"BasePath": "D:\\test"
+			"BasePath": "/storage"
 		}
 	}
 }

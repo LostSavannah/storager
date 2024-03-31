@@ -14,7 +14,7 @@ export default function StorageListView({
   <div className="container">
   <div className="row">
       <div className="col-12">
-          <h2>Storages</h2>
+          <h4>Storages</h4>
       </div>
   </div>
     <div className="row">

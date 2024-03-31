@@ -50,7 +50,7 @@ export default function StorageView({
         className="container">
         <div className="row">
             <div className="col-12">
-                <h2>{storage}</h2>
+                <h4>Current storage: {storage}</h4>
             </div>
         </div>
         <div className="row">
@@ -69,8 +69,8 @@ export default function StorageView({
                 <table className="table">
                     <thead>
                         <tr>
-                            <th>name</th>
-                            <th>actions</th>
+                            <th>Name</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>

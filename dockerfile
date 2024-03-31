@@ -24,7 +24,7 @@ RUN echo example > /storage/file.txt
 ENV STORAGE_CONFIGURATION_FILE_LOCATION=/app/api/config/storage_configuration.json
 ENV STORAGE_PORT=45334
 ENV STORAGE_HOST=0.0.0.0
-ENV STORAGE_STATIC=/app/frontend
+ENV STORAGE_STATIC=/app/static
 
 COPY --from=build /app/dist ./static 
 
