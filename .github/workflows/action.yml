@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: docker-desktop
+    runs-on: ubuntu-test
     steps:
       - uses: actions/checkout@v3
       - run: |
